@@ -10,7 +10,10 @@ const cart = (state = initialState, action) => {
         case ADD_TO_CART:
             return {...state, items: [...state.items, action.payload]}
         case REMOVE_FROM_CART:
-            return state;
+            return {...state, items: [
+                ...state.items.slice(0, action.payload),
+                ...state.items.slice(action.payload + 1)
+            ],};
         case SHOW_CART:
             return {...state, showCart: true}
         case HIDE_CART:
