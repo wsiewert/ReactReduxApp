@@ -1,7 +1,13 @@
-import React, { Component } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import React, { Component } from 'react';
+import { Card, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/cartAction';
 
 class ProductCard extends Component {
+
+    addItemToCart(item){
+        this.props.addToCart(item);
+    }
 
     render() {
         return (
@@ -12,10 +18,15 @@ class ProductCard extends Component {
                 <Card.Text>
                 {this.props.details.description}
                 </Card.Text>
-                <Button variant="primary">Add To Cart +</Button>
+                <Button variant="primary" onClick={()=>{this.addItemToCart(this.props.details)}}>Add To Cart +</Button>
             </Card.Body>
             </Card>
         )
     }
 }
- export default ProductCard;
+
+const mapStateToProps = state => ({
+    cart: state.cart
+});
+
+ export default connect(mapStateToProps, {addToCart})(ProductCard);

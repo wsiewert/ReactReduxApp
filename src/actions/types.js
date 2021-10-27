@@ -1,3 +1,7 @@
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const SET_CATEGORY_FILTER = "SET_CATEGORY_FILTER";
 export const SET_CATEGORIES = "SET_CATEGORIES";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const SHOW_CART = "SHOW_CART";
+export const HIDE_CART = "HIDE_CART";
