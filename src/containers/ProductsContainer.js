@@ -5,6 +5,7 @@ import { fetchProducts } from '../actions/productAction'
 import ProductCard from '../components/ProductCard';
 import ProductCategoryDropDown from '../components/ProductCategoryDropDown';
 import { setCategories } from '../actions/categoriesAction';
+import SortOrder from '../components/SortOrder';
 
 class ProductsContainer extends Component {
 
@@ -39,10 +40,18 @@ class ProductsContainer extends Component {
             }
         }
 
+        const sortOrder = (a, b) => {
+            if(this.props.sort === "Price: Highest to Lowest"){
+                return b.price-a.price;
+            } else {
+                return a.price-b.price;
+            }
+        }
+
         //TODO: use displayedProducts Filter and sort
         const productItems = this.props.products
             .filter(categoryFilter)
-            // .filter(prod => prod.price > 40)
+            .sort(sortOrder)
             .map(prod => (
                 <Col key={prod.id}>
                     <ProductCard details={prod}/>
@@ -50,9 +59,13 @@ class ProductsContainer extends Component {
         ));
 
         return (
-            <div>
-                <h2>Browse Products</h2>
-                <ProductCategoryDropDown/>
+            <div className="p-5">
+                <h2 >Browse Products</h2>
+                <div className="d-inline">
+                    <ProductCategoryDropDown />
+                    <SortOrder/>
+                </div>
+                <span className="mx-5"/>
                 <Container fluid>
                 <Row>
                     {productItems}
@@ -65,7 +78,8 @@ class ProductsContainer extends Component {
 
 const mapStateToProps = state => ({
     category: state.categories,
-    products: state.products.items
+    products: state.products.items,
+    sort: state.sort.sort
 });
 
 export default connect(mapStateToProps, { fetchProducts, setCategories })(ProductsContainer);

@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import { setCategoryFilter, setCategories } from '../actions/categoriesAction';
 
 class ProductCategoryDropDown extends Component {
-
-    //1. Get all categories
-    //2. add selected categories to global state
-    
     componentDidMount(){
 
     }

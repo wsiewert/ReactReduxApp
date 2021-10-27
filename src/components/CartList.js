@@ -10,6 +10,15 @@ class CartList extends Component {
         this.props.removeFromCart(index);
     }
 
+    getTotalPrice(){
+        console.log("THIS MADE IT");
+        let total = 0;
+        this.props.cart.items.forEach((item) => {
+            total += item.price;
+        });
+        return total.toFixed(2);
+    }
+
     render() {
         const tableData = this.props.cart.items.map(
             (item, index) => (
@@ -33,6 +42,12 @@ class CartList extends Component {
                 </thead>
                 <tbody>
                     {tableData}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total: {this.getTotalPrice()}</td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </Table>
         )

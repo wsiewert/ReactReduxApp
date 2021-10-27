@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, Badge } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import {showCart, hideCart} from '../actions/cartAction';
 
@@ -22,7 +22,9 @@ class NavigationBar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link onClick={()=>{this.showCart()}}>Cart Items: {this.props.cart.items.length}</Nav.Link>
+                        <Nav.Link onClick={()=>{this.showCart()}}>
+                            Cart Items: <Badge bg="secondary">{this.props.cart.items.length}</Badge>
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

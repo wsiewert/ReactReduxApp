@@ -10,9 +10,8 @@ class Home extends Component {
         return (
             <div>
                 <NavBar/>
-                <h2>Home Page STORE TITLE GOES HERE</h2>
+                <h1 className="text-center m-5">React-Redux Store</h1>
                 {this.props.cart.showCart ? <CartContainer/> : <ProductsContainer/> }
-                
             </div>
         )
     }

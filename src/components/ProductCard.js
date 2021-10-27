@@ -11,11 +11,16 @@ class ProductCard extends Component {
 
     render() {
         return (
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={this.props.details.image} />
-            <Card.Body>
+            <Card className="my-5" style={{ width: '18rem'}}>
+            <Card.Img variant="top" style={{ height: '16rem', 'object-fit': 'cover'}} src={this.props.details.image} />
+            <Card.Body >
                 <Card.Title>{this.props.details.title}</Card.Title>
-                <Card.Text>
+                <Card.Title className="text-muted">${this.props.details.price.toFixed(2)}</Card.Title>
+                <Card.Text style={{ 
+                    overflow: 'hidden', height: '7rem',
+                                'display': '-webkit-box',
+                                '-webkit-line-clamp': 3,
+                                '-webkit-box-orient': 'vertical'}}>
                 {this.props.details.description}
                 </Card.Text>
                 <Button variant="primary" onClick={()=>{this.addItemToCart(this.props.details)}}>Add To Cart +</Button>
