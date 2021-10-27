@@ -6,12 +6,10 @@ import { removeFromCart } from '../actions/cartAction';
 class CartList extends Component {
 
     removeItem(index){
-        console.log("Removed Item");
         this.props.removeFromCart(index);
     }
 
     getTotalPrice(){
-        console.log("THIS MADE IT");
         let total = 0;
         this.props.cart.items.forEach((item) => {
             total += item.price;

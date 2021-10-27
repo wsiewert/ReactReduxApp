@@ -14,7 +14,6 @@ class ProductsContainer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        //Update Categories After Fetch Products
         if (prevProps.products !== this.props.products) {
             this.props.setCategories(this.getCategoriesFromProducts());
         }
@@ -30,7 +29,6 @@ class ProductsContainer extends Component {
         return categoryList;
     }
 
-    //TODO: fix after filter state
     render() {
         const categoryFilter = (prod) => {
             if(this.props.category.category === "All"){
@@ -48,7 +46,6 @@ class ProductsContainer extends Component {
             }
         }
 
-        //TODO: use displayedProducts Filter and sort
         const productItems = this.props.products
             .filter(categoryFilter)
             .sort(sortOrder)

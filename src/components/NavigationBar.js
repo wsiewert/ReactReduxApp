@@ -7,12 +7,10 @@ class NavigationBar extends Component {
 
     showCart(){
         this.props.showCart()
-        console.log(this.props.cart);
     }
 
     hideCart(){
         this.props.hideCart();
-        console.log(this.props.cart);
     }
 
     render() {
