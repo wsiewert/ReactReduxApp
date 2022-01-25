@@ -11,7 +11,7 @@ class ProductCard extends Component {
 
     render() {
         return (
-            <Card className="my-5" style={{ width: '18rem'}}>
+            <Card className="my-5" style={{ width: '18rem', height: '50rem'}}>
             <Card.Img variant="top" style={{ height: '16rem', 'object-fit': 'cover'}} src={this.props.details.image} />
             <Card.Body >
                 <Card.Title>{this.props.details.title}</Card.Title>
